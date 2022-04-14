@@ -94,7 +94,6 @@ namespace owofy
         public void Dispose()
         {
             _chatGui.ChatMessage -= Chat_OnChatMessage;
-            _pi.Dispose();
         }
     }
 }

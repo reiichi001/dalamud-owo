@@ -9,7 +9,8 @@
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
         <NoWarn>IDE0003</NoWarn>
-        <AssemblyVersion>1.4.0.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     </PropertyGroup>
 
     <PropertyGroup Label="Documentation">
@@ -35,9 +36,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Lumina" Version="3.3.0" />
-        <PackageReference Include="Lumina.Excel" Version="5.50.0" />
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="DalamudPackager" Version="2.1.6" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.333">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -57,6 +56,18 @@
             <HintPath>$(AppData)\XIVLauncher\addon\Hooks\dev\ImGuiScene.dll</HintPath>
             <Private>False</Private>
         </Reference>
+		<Reference Include="Lumina">
+			<HintPath>$(AppData)\XIVLauncher\addon\Hooks\dev\Lumina.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="Lumina.Excel">
+			<HintPath>$(AppData)\XIVLauncher\addon\Hooks\dev\Lumina.Excel.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="Newtonsoft.Json">
+			<HintPath>$(AppData)\XIVLauncher\addon\Hooks\dev\Newtonsoft.Json.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
     </ItemGroup>
     
     <ItemGroup>
