@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Text;
 using System.Text.RegularExpressions;
-using Dalamud.Game.Command;
-using Dalamud.Game.Gui;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
 using Dalamud.IoC;
 using Dalamud.Logging;
 using Dalamud.Plugin;
+using Dalamud.Plugin.Services;
 using owofy.Attributes;
 
 namespace owofy
@@ -15,13 +13,13 @@ namespace owofy
     public class OwoPlugin : IDalamudPlugin
     {
         private DalamudPluginInterface _pi;
-        private ChatGui _chatGui;
+        private IChatGui _chatGui;
 
         private PluginCommandManager<OwoPlugin> commandManager;
         private Configuration config;
         private readonly Random _rng = new Random();
 
-        public OwoPlugin([RequiredVersion("1.0")] DalamudPluginInterface pluginInterface, [RequiredVersion("1.0")] ChatGui chat, [RequiredVersion("1.0")] CommandManager commands)
+        public OwoPlugin([RequiredVersion("1.0")] DalamudPluginInterface pluginInterface, IChatGui chat, ICommandManager commands)
         {
             _pi = pluginInterface;
             _chatGui = chat;

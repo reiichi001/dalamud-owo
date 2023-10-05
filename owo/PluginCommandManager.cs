@@ -1,5 +1,5 @@
 ﻿using Dalamud.Game.Command;
-using Dalamud.Plugin;
+using Dalamud.Plugin.Services;
 using owofy.Attributes;
 using System;
 using System.Collections.Generic;
@@ -12,11 +12,11 @@ namespace owofy
 {
     public class PluginCommandManager<THost> : IDisposable
     {
-        private readonly CommandManager cmdManager;
+        private readonly ICommandManager cmdManager;
         private readonly (string, CommandInfo)[] pluginCommands;
         private readonly THost host;
 
-        public PluginCommandManager(THost host, CommandManager cmdManager)
+        public PluginCommandManager(THost host, ICommandManager cmdManager)
         {
             this.cmdManager = cmdManager;
             this.host = host;
