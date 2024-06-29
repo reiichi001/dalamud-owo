@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
 using Dalamud.IoC;
-using Dalamud.Logging;
+
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using owofy.Attributes;
@@ -14,15 +14,17 @@ namespace owofy
     {
         private DalamudPluginInterface _pi;
         private IChatGui _chatGui;
+        private IPluginLog _pluginLog;
 
         private PluginCommandManager<OwoPlugin> commandManager;
         private Configuration config;
         private readonly Random _rng = new Random();
 
-        public OwoPlugin([RequiredVersion("1.0")] DalamudPluginInterface pluginInterface, IChatGui chat, ICommandManager commands)
+        public OwoPlugin(DalamudPluginInterface pluginInterface, IChatGui chat, ICommandManager commands, IPluginLog pluginLog)
         {
             _pi = pluginInterface;
             _chatGui = chat;
+            _pluginLog = pluginLog;
 
             this.config = (Configuration)_pi.GetPluginConfig() ?? new Configuration();
             this.config.Initialize(_pi);
@@ -32,7 +34,7 @@ namespace owofy
             this.commandManager = new PluginCommandManager<OwoPlugin>(this, commands);
         }
 
-        private void Chat_OnChatMessage(Dalamud.Game.Text.XivChatType type, uint senderId, ref SeString sender, ref SeString message, ref bool isHandled)
+        private void Chat_OnChatMessage(Dalamud.Game.Text.XivChatType type, int timestamp, ref SeString sender, ref SeString message, ref bool isHandled)
         {
             if (config.Enabed)
             {
@@ -72,7 +74,7 @@ namespace owofy
             // You may want to assign these references to private variables for convenience.
             // Keep in mind that the local player does not exist until after logging in.
             _chatGui.Print($"Hello Owofied chat.");
-            PluginLog.Verbose("OwO has been enabled.");
+            _pluginLog.Verbose("OwO has been enabled.");
         }
 
         [Command("/uwu")]
@@ -84,7 +86,7 @@ namespace owofy
             // You may want to assign these references to private variables for convenience.
             // Keep in mind that the local player does not exist until after logging in.
             _chatGui.Print($"Goodbye Owofied chat. ;_;");
-            PluginLog.Verbose("OwO has been disabled.");
+            _pluginLog.Verbose("OwO has been disabled.");
         }
 
         public string Name => "owo plugin";
