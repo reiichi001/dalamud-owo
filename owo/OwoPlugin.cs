@@ -12,7 +12,7 @@ namespace owofy
 {
     public class OwoPlugin : IDalamudPlugin
     {
-        private DalamudPluginInterface _pi;
+        private IDalamudPluginInterface _pi;
         private IChatGui _chatGui;
         private IPluginLog _pluginLog;
 
@@ -20,7 +20,7 @@ namespace owofy
         private Configuration config;
         private readonly Random _rng = new Random();
 
-        public OwoPlugin(DalamudPluginInterface pluginInterface, IChatGui chat, ICommandManager commands, IPluginLog pluginLog)
+        public OwoPlugin(IDalamudPluginInterface pluginInterface, IChatGui chat, ICommandManager commands, IPluginLog pluginLog)
         {
             _pi = pluginInterface;
             _chatGui = chat;
