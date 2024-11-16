@@ -3,7 +3,7 @@
     <PropertyGroup>
         <AssemblyName>owofy</AssemblyName>
         <NoWarn>IDE0003</NoWarn>
-        <AssemblyVersion>1.6.0.0</AssemblyVersion>
+        <AssemblyVersion>1.7.0.0</AssemblyVersion>
     </PropertyGroup>
     <PropertyGroup>
         <DalamudLibPath>$(appdata)\XIVLauncher\addon\Hooks\dev\</DalamudLibPath>
